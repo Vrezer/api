@@ -1,7 +1,7 @@
 {% extends 'questionnaire/base.html' %}
 {% block content %}
 <div class="container">
-    <div><h1>{{ question.question_text }} z dnia {{ question.question_date }}</h1></div>
+    <div><h1>{{ question.question_text }} Pytanie z dnia {{ question.question_date }}</h1></div>
     
         <div class="row">
           <div class="col-sm">
@@ -9,18 +9,25 @@
           </div>
           <div class="col-sm">
            
-{% if error_message %}<p><strong>{{error_message}}</strong></p>{% endif %}
 
+{% if error_message %}<p><strong>{{error_message}}</strong></p>{% endif %}
+<br>
+<br>
+<h4>
 <form action="{% url 'vote' question.id %}" method="POST">
     {% csrf_token %}
     {% for ans in question.answer_set.all %}
         <input type="radio" name="ans" id="ans{{ forloop.counter }}" value="{{ ans.id}}">
         <label for="ans{{ forloop.counter }}">{{ ans.answer_text }}</label>
         <br>
+        <br>
     {% endfor %}
-    <button type="submit" class="btn btn-success" value='vote'>Success</button> 
+    <button type="submit" class="btn btn-dark" value='vote'>Zagłosuj</button> 
 </form>
-
+<form action="{% url 'index' %}" method="GET"><br>
+    <button type="submit" class="btn btn-info" > Powrót </button> 
+</form>
+</h4>
 </div>
 <div class="col-sm">
   

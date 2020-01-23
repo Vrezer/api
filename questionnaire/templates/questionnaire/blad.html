@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Error</title>
 </head>
-<body>
-    <h1>BŁĄD</h1>
+{% extends 'questionnaire/base.html' %}
+{% block content %}
+<body><br><br><br>
+    <h1><center>Page Not Found </center></h1><br><br><br>
+    <h2>
+        <center> <a href="{% url 'index' %}">Powrót do Pytań</a></center>  </h2>
 </body>
 </html>
+{% endblock %}

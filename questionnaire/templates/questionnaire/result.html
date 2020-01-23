@@ -1,8 +1,21 @@
+{% extends 'questionnaire/base.html' %}
+{% block content %}
+<center>
 <h1>{{question.question_text}}</h1>
 <ul>
-
+    <script>
+        alert("Dzięki za głos! :D ");
+        </script>
+    <br><br>
+    <h3>
     {% for ans in question.answer_set.all %}
         <li>{{ans.answer_text}}--{{ ans.glosy }} głosów</li>
+        <br>
     {%endfor%}
     </ul>
-<a href="{% url 'detail' question.id%}">Zagłosuj Ponownine</a>   
+    
+</h3>
+<h2>
+<a href="{% url 'index' %}">Powrót do Pytań</a>   </h2>
+</center>
+{% endblock %}

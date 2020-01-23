@@ -6,7 +6,7 @@ from django.http import HttpResponse,Http404,  HttpResponseRedirect
 from .models import Question,Answer
 
 def index(request):
-    last_question=Question.object.order_by('-question_date')[:5]
+    last_question=Question.object.order_by('-question_date')
     context={'last_question':last_question}
     return render(request,'questionnaire/index.html',context)
 
@@ -33,3 +33,4 @@ def vote(request,question_id):
 def result(request,question_id):
     question=get_object_or_404(Question,pk=question_id)
     return render(request,'questionnaire/result.html',{'question':question})      
+
