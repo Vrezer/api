@@ -1,0 +1,8 @@
+<h1>{{question.question_text}}</h1>
+<ul>
+
+    {% for ans in question.answer_set.all %}
+        <li>{{ans.answer_text}}--{{ ans.glosy }} głosów</li>
+    {%endfor%}
+    </ul>
+<a href="{% url 'detail' question.id%}">Zagłosuj Ponownine</a>   

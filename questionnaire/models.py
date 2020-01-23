@@ -10,20 +10,20 @@ class Question(models.Model):
     object=models.Manager()
     def __str__(self):
         return self.question_text
-    def ostatnio_opublikowane(self):
+    def last_questions_publicate(self):
         return self.question_date >=timezone.now() - datetime.timedelta(days=-1)  
 
     class Meta:
         verbose_name='Pytanie'    
-        verbose_name_plural='Pytania
+        verbose_name_plural='Pytania'
 
 class Answer(models.Model):
-    question= models.ForeignKey(Question,on_delete=models.CASCADE)
+    question = models.ForeignKey(Question,on_delete=models.CASCADE)
     answer_text=models.CharField(max_length=200)
     glosy=models.IntegerField(default=0)
     object=models.Manager()
     def __str__(self):
-        return self.text_odpowiedzi
+        return self.answer_text
 
     class Meta:
         verbose_name='Odpowiedz'    
